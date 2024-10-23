@@ -9,7 +9,7 @@ class Book < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
-  def search.looks(search, word)
+  def self.looks(search, word)
     if search =="perfect_match"
       @book = Book.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
