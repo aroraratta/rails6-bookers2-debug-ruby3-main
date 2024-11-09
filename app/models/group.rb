@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
   has_many :group_users, dependent: :destroy
-  has_many :users, through: group_users
+  has_many :users, through: :group_users
 
   belongs_to :owner, class_name: "User"
 
@@ -10,6 +10,10 @@ class Group < ApplicationRecord
 
   def is_owned_by?(user)
     owner.id == user.id
+  end
+  
+  def get_group_image
+    (group_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
 end
