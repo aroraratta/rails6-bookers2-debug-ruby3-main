@@ -27,4 +27,6 @@ Rails.application.routes.draw do
 
   resources :notification, only: [:update]
 
+  resources :groups, only: [:new, :index, :show, :create, :edit, :update]
+
 end
