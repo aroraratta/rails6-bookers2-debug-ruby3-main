@@ -66,4 +66,5 @@ class User < ApplicationRecord
   def guest_user?
     email == "guest@example.com"
   end
+
 end
