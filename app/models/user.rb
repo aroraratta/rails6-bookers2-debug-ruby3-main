@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :read_counts, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :group_users, dependent: :destrou
+  has_many :groups, through: :group_users
 
   has_one_attached :profile_image
 
