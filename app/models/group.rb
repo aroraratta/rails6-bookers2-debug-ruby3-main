@@ -13,7 +13,7 @@ class Group < ApplicationRecord
   end
   
   def get_group_image
-    (group_image.attached?) ? profile_image : 'no_image.jpg'
+    (group_image.attached?) ? group_image : 'no_image.jpg'
   end
 
 end
