@@ -15,7 +15,7 @@
             <th>グループ名</th>
             <th>紹介文</th>
             <th>メンバー</th>
-            <th></th>
+            <th colspan=2></th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +28,22 @@
                 <li><%= user.name %><li>
               <% end %>
             </td>
-            <td>
-              <% if @group.is_owned_by?(current_user) %>
+            <% if @group.is_owned_by?(current_user) %>
+              <td>
                 <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-success" %>
-              <% elsif @group.includesUser?(current_user) %>
+              </td>
+              <td>
+                <%= link_to 'Notice an Event', group_new_mail_path(@group), class: "btn btn-info" %>
+              </td>
+            <% elsif @group.includesUser?(current_user) %>
+              <td>
                 <%= link_to 'Leave this group', group_group_users_path(@group), method: :delete, class: "btn btn-danger" %>
-              <% else %>
+              </td>
+            <% else %>
+              <td>
                 <%= link_to 'Join this group', group_group_users_path(@group), method: :post, class: "btn btn-success" %>
-              <% end %>
-            </td>
+               </td>
+            <% end %>
           </tr>
         </tbody>
       </table>
